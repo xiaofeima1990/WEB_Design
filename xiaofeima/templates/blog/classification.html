@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Classification{% endblock %}
+
+{% block content %}
+{% for cate, art in cat_dict.items  %}
+<p class="alert alert-info">“{{ cate.name }}”目录下共有{{ art|length }}篇文章</p>
+{% for article in art %}
+    {# {% include "blog/_article.html" %} #}
+    <p class="lead blog-description" ><a href='/blog/article/{{ article.id }}'>{{article.caption}}</a></p>
+{% endfor %}
+{% endfor %}
+{% endblock %} 
+
+
+{% block side %}
+    {% include "blog/_side.html" %}
+{% endblock %}

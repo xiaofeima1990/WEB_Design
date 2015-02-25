@@ -1,0 +1,13 @@
+<ul class="nav nav-list">
+	{% if article_list %}
+          {% for article in article_list %}
+          <p >
+            <a href="/blog/article/{{ article.id }}">{{ article.caption }}</a>
+          </p>
+
+          {% endfor %}
+    {% else %}
+        <strong>No articles at present.</strong>
+    {% endif %}
+</ul>
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}  
+This is <strong>MY</strong> Blog. <br />
+
+
+MY motto is <strong>{{ motto }} </strong>.<br />
+
+<p>created by <strong>xiaofeima</strong> </p>
+
+Here's a picture of myself<br />
+<div class="sel_img" >
+    <img src="{% static 'img/mgx.jpg' %}" alt="Picture of myself" />
+</div>
+    
+{% endblock %}
+
+{% block side %}
+    {% include "blog/_side.html" %}
+{% endblock %}

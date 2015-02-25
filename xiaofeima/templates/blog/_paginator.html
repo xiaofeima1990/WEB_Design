@@ -1,0 +1,16 @@
+<nav>
+	<ul class="pager">
+{% if articles.has_previous %}
+        <li><a  title='上一页' href='?page={{ articles.previous_page_number }}'><span>&lt;&lt;</span></a></li>
+ {% endif %}
+ {% for page in articles.paginator.page_range %}
+         <li><a class='pager' href='?page={{ page }}' title='{{ page }}'><span>{{ page }}</span></a></li>
+ {% endfor %}
+ {% if articles.has_next %}
+     <li><a class='pager' title='下一页' href='?page={{ articles.next_page_number }}'><span>&gt;&gt;</span></a></li>
+ {% endif %}
+ </ul>
+ </nav>
+
+
+ 

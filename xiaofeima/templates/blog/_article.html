@@ -1,0 +1,8 @@
+{% load mark %}
+<div class="blog-post">
+        <h3 class="blog-post-title">
+            <a href="/blog/article/{{ article.id }}">{{ article.caption }}</a>
+        </h3>
+        <p class="blog-post-meta">{{ article.publish_time }} <a href="#">{{article.author}}</a></p>
+        <p>{{ article.content|my_markdown|safe }}</p>
+</div><!-- /.blog-post -->

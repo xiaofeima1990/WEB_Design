@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <!--<link rel="shortcut icon" type="image/x-icon" href="http://a.xnimg.cn/favicon-rr.ico?ver=3" />-->
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'lib/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'lib/css/blog.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    {# this is the navbar at the header   #}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          {# <a class="brand" href="/blog">XIAOFEIMA</a>  #}
+          <a class="navbar-brand" href="#">Home</a>
+          <a class="navbar-brand" href="/blog">Blog</a>
+          <a class="navbar-brand" href="/blog/classification">Archive</a>
+          {# <a class="navbar-brand" href="#">little game</a> #}
+          <a class="navbar-brand" href="/blog/about">About</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">        
+            {% if user.is_authenticated %}
+                        <li class="navbar-text">Welcome, {{ user.username }}!</li>
+                        <li><a href="/blog/logout/">Logout</a></li>
+                        <li><a href="/blog/profile">Profile</a></li>
+                       {% else %}                      
+                        <form class="navbar-form navbar-right" action="#">
+                          <div class="form-group">
+                            <input type="text" placeholder="Email" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control">
+                          </div>
+                          <button type="submit" class="btn btn-success">Sign in</button>
+                          <button type="button" class="btn btn-primary" id="register" href="/blog/register/">Register</button>
+                        </form>
+                        
+            {% endif %}
+
+            
+        </div><!--/.navbar-collapse -->
+
+      </div>
+    </nav>
+
+
+    <div class="container">
+
+      <div class="blog-header">
+        {% if user.is_authenticated %}
+        <h1 class="blog-title">{{ user.username }}'s blog</h1>
+        <p class="lead blog-description">created by {{ user.username }} </p>
+        {% else %}
+        <p class="lead blog-description">blog </p>
+        {% endif %}
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          {% block content %}{% endblock %}
+
+          
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          {% block side %}{% endblock %}
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+          <a href="">xiaofeima's blog</a>@2015
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'lib/jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'lib/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/js/blog-ajax.js' %}"></script>
+  </body>
+</html>

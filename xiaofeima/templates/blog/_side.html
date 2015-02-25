@@ -1,0 +1,46 @@
+      
+ <div class="sidebar-module sidebar-module-inset">
+      <ul class="nav nav-list">
+                <h4 class="nav-header">Find a article</h4>
+                <form>
+                <label></label>
+                <li><input  class="search-query span10" type="text" name="suggestion" value="" id="suggestion" />
+                </li>
+                </form>
+      </ul>
+          {% if article_list %}
+          <div id="cats">
+          {% include 'blog/art_list.html' with article_list=article_list %}
+          </div>
+          {% endif %}
+
+      </div>
+
+      <div class="sidebar-module">
+        <h4>classification</h4>
+        <ol class="list-unstyled">
+            {% if classification %}
+                {% for item in classification %}
+                    <li><a href="/classification/{{ item.id }}">{{ item.name }}</a></li>
+                {% endfor %}
+            {% endif %}
+        </ol>
+      <hr>
+        <h4>link</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="http://www.renren.com/324392671">renren</a></li>
+        </ol>
+        <hr>
+
+{#         <h4>login</h4>
+        <ol class="list-unstyled">
+          <li><a href="/admin">login</a></li>
+        </ol>
+      </div> #}
+
+      <div class="sidebar-module sidebar-module-inset">
+      <h4>about</h4>
+        <p>xiaofeima </br>Renmin University of China </br> </p>
+      </div>
